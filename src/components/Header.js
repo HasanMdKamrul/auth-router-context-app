@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/UserContextPractice";
 
 const Header = () => {
 
-    const {displayName} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
     
     
   return (
@@ -15,7 +15,7 @@ const Header = () => {
         <NavLink className='mr-2 btn btn-ghost normal-case text-xl' to="/login">Log in</NavLink>
         <NavLink className=' btn btn-ghost normal-case text-xl' to="/Register">Register</NavLink>
         {
-            displayName && <div className=' btn btn-ghost normal-case text-xl' >Welcome <span className="text-primary ml-2">{displayName}</span></div>
+            user.email && <div className=' btn btn-ghost normal-case text-xl' >Welcome <span className="text-primary ml-2">{user.email}</span></div>
         }
       </div>
     </div>
