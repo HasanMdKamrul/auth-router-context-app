@@ -5,13 +5,13 @@ const Home = () => {
     
     const {user} = useContext(AuthContext);
 
-    const {email} = user;
+    
 
   return (
     <div>
      <h1>This is home</h1>
      {
-        email && <p>{email}</p>
+        user?.email && <p>{user.email}</p>
      }
     </div>
   );
