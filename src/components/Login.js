@@ -5,10 +5,11 @@ const Login = () => {
 
     const {signIn} = useContext(AuthContext);
 
-    const signInFunctionality = async(email,password)=>{
+    const signInFunctionality = async(form,email,password)=>{
         try {
             const result = await signIn(email,password);
-            console.log('SignedIn user', result.user)
+            console.log('SignedIn user', result.user);
+            form.reset();
         } catch (error) {
             console.log(error)
         }
@@ -26,7 +27,7 @@ const Login = () => {
 
         // ** Sign In
 
-        signInFunctionality(email,password);
+        signInFunctionality(form,email,password);
 
         
     }

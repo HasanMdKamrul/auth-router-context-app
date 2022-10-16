@@ -25,6 +25,7 @@ const Register = () => {
         createUser(email,password)
         .then((result)=> {
             console.log(result.user);
+            form.reset();
         })
         .catch(error=> console.error('error', error))
     };
@@ -34,7 +35,8 @@ const Register = () => {
         const signInGoogle = async ()=>{
             try {
                 const result = await googleAuthentication();
-                console.log(result.user)
+                console.log(result.user);
+               
             } catch (error) {
                 console.log(error)
             }
