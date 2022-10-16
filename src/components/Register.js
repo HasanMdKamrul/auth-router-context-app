@@ -4,7 +4,7 @@ import { AuthContext } from '../contexts/UserContextPractice';
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext);
+    const {createUser,googleAuthentication} = useContext(AuthContext);
 
    
 
@@ -27,9 +27,23 @@ const Register = () => {
             console.log(result.user);
         })
         .catch(error=> console.error('error', error))
+    };
 
+    const googleSigInHandler = ()=>{
+        
+        const signInGoogle = async ()=>{
+            try {
+                const result = await googleAuthentication();
+                console.log(result.user)
+            } catch (error) {
+                console.log(error)
+            }
+        };
+
+        signInGoogle()
 
     }
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -87,6 +101,7 @@ const Register = () => {
               </div>
             </div>
             </form>
+            <button onClick={googleSigInHandler} type="button" className="btn btn-primary">SignIn Google</button>
           </div>
         </div>
       </div>
