@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/UserContextPractice';
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthContext);
+
+   
+
     const handleSubmit = event=>{
 
         event.preventDefault()
@@ -11,7 +17,18 @@ const Register = () => {
         const name = form.name.value;
         const password = form.password.value;
 
-        console.log(name,email,password)
+        console.log(name,email,password);
+
+
+        // ** create a user
+
+        createUser(email,password)
+        .then((result)=> {
+            console.log(result.user);
+        })
+        .catch(error=> console.error('error', error))
+
+
     }
   return (
     <div>
